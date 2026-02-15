@@ -46,8 +46,9 @@ endif()
 list(APPEND CMAKE_MODULE_PATH
   ${CMAKE_SOURCE_DIR}/script/cmake)
 include(FetchContent)
-
-# enable_testing()
+#REM: Creates the BUILD_TESTING option (default ON)
+#REM: and enables testing if BUILD_TESTING is ON
+include(Ctest)
 
 add_subdirectory(src/main)
 if(BUILD_TESTING)
