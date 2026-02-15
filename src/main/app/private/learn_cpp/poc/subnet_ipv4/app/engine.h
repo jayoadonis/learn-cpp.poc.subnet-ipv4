@@ -14,7 +14,6 @@ namespace learn_cpp::poc::subnet_ipv4::app {
   class Engine {
   public:
     static void test() { 
-      xyz_t xyz(101);
       std::printf("::: Hi from Engine test(V)V.\n");
     }
   };
