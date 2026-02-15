@@ -1,5 +1,5 @@
-#ifndef __LEARN_CPP_POC_SUBNET_IPV4_ENGINE_H
-#define __LEARN_CPP_POC_SUBNET_IPV4_ENGINE_H
+#ifndef __LEARN_CPP_POC_SUBNET_IPV4_CORE_ENGINE_H
+#define __LEARN_CPP_POC_SUBNET_IPV4_CORE_ENGINE_H
 
 #include "learn_cpp/poc/subnet_ipv4/core/IPv4.h"
 #include <cstdio>
