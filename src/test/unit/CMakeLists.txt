@@ -33,13 +33,13 @@ add_custom_command(TARGET ${__TARGET_UNIT_TEST}
           $<TARGET_FILE_DIR:${__TARGET_UNIT_TEST}>
   COMMENT "Copy (${__TARGET_CORE}) runtime next to unit test")
 
-add_test(NAME "unit-test-all" COMMAND ${__TARGET_UNIT_TEST} "--all")
-add_test(NAME "unit-test-i" COMMAND ${__TARGET_UNIT_TEST} "--test-i")
-add_test(NAME "unit-test-ii" COMMAND ${__TARGET_UNIT_TEST} "--test-ii")
+add_test(NAME "compact" COMMAND ${__TARGET_UNIT_TEST} "--compact")
+add_test(NAME "ipv4-test-i" COMMAND ${__TARGET_UNIT_TEST} "--ipv4-test-i")
+add_test(NAME "ipv4-test-ii" COMMAND ${__TARGET_UNIT_TEST} "--ipv4-test-ii")
 
-set_tests_properties("unit-test-all" PROPERTIES LABELS "all")
-set_tests_properties("unit-test-i" PROPERTIES LABELS "test-i")
-set_tests_properties("unit-test-ii" PROPERTIES LABELS "test-ii")
+set_tests_properties("compact" PROPERTIES LABELS "unit-test-compact")
+set_tests_properties("ipv4-test-i" PROPERTIES LABELS "unit-test-ipv4-test-i")
+set_tests_properties("ipv4-test-ii" PROPERTIES LABELS "unit-test-ipv4-test-ii")
 
 string(TOLOWER ${CMAKE_CXX_COMPILER_ID} __cmake_cxx_compiler_id_tolower)
 string(TOLOWER ${CMAKE_SYSTEM_NAME} __cmake_system_name_tolower)
