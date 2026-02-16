@@ -6,12 +6,12 @@
 namespace learn_cpp::poc::subnet_ipv4::core {
   IPv4::IPv4(std::uint32_t ip) : m_value{ip} { }
 
-  std::uint32_t IPv4::value() const {
+  [[nodiscard]] constexpr inline std::uint32_t IPv4::value() const {
     return this->m_value;
   }
 
-  std::uint8_t IPv4::first_octet() const {
-    return static_cast<std::uint8_t>((this->m_value >> 24) & 0xFF);
+  std::uint16_t IPv4::first_octet() const {
+    return static_cast<std::uint16_t>((this->m_value >> 24) & 0xFF);
   }
 
   std::string IPv4::to_string() const {
@@ -44,4 +44,6 @@ namespace learn_cpp::poc::subnet_ipv4::core {
 
     return IPv4(result);
   }
+
+
 }

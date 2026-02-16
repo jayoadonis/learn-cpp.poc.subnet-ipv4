@@ -64,11 +64,11 @@ subnet-ipv4/
 ## Feature
 + []()
 
-<!-- ## Usage*
+## Usage*
 
 [^ToC](#table-of-contents)
 
-### With pre-compiled binary
+<!-- ### With pre-compiled binary
 ```bash
 #REM: Headless
 $ <artifact_bin_name> --headless <ip> <needed_amount_ip_host_address>
@@ -91,6 +91,13 @@ $ install/subnet-ipv4/<version>/bin/<artifact_bin_name> --headless <ip> <needed_
 $ install/subnet-ipv4/<version>/bin/<artifact_bin_name> 
 > <ip> <needed_amount_ip_host_address>
 ``` -->
+
+### Testing
+```bash
+$ cmake --build build --config Debug [--clean-first] [--verbose]
+$ ctest --test-dir build -C Debug -L "unit-test" -VV 
+# $ ctest --test-dir build -C Debug -L "integration-test" -VV 
+```
 
 ## License
 
