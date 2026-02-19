@@ -1,5 +1,7 @@
 add_executable(${__TARGET_UNIT_TEST})
 
+add_dependencies(${__TARGET_UNIT_TEST} ${__TARGET_CORE})
+
 target_compile_features(${__TARGET_UNIT_TEST}
   PUBLIC cxx_std_17)
 
@@ -24,8 +26,6 @@ target_include_directories(${__TARGET_UNIT_TEST}
 target_link_libraries(${__TARGET_UNIT_TEST}
   PRIVATE ${__TARGET_CORE})
 
-add_dependencies(${__TARGET_UNIT_TEST} ${__TARGET_CORE})
-
 add_custom_command(TARGET ${__TARGET_UNIT_TEST}
   POST_BUILD
   COMMAND ${CMAKE_COMMAND} -E copy_if_different
@@ -47,4 +47,12 @@ set_target_properties(${__TARGET_UNIT_TEST}
   PROPERTIES
     RUNTIME_OUTPUT_NAME 
       ${__TARGET_UNIT_TEST}-$<LOWER_CASE:$<CONFIG>>-${__cmake_cxx_compiler_id_tolower}-${__cmake_system_name_tolower})
+
+add_custom_target("unit-test"
+  COMMAND ${CMAKE_CTEST_COMMAND} 
+    --test-dir ${CMAKE_BINARY_DIR}
+    -C $<CONFIG>
+    -L "unit-test.*"
+    -VV
+  DEPENDS ${__TARGET_CORE})
 
