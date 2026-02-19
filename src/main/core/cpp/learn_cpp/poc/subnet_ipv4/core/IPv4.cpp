@@ -33,12 +33,12 @@ namespace learn_cpp::poc::subnet_ipv4::core {
         throw std::runtime_error("Invalid IPv4 format");
       }
       
-      std::int32_t octet = std::stoi(out_token);
+      std::uint32_t octet = std::stoul(out_token, nullptr, 10);
       if(octet < 0 || octet > std::numeric_limits<std::uint8_t>::max()) {
         throw std::runtime_error("Invalid IPv4 octect");
       }
 
-      result = (result << 8) | static_cast<std::uint32_t>(octet);
+      result = (result << 8) | octet;
     }
 
     return IPv4(result);
