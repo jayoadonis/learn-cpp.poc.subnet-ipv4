@@ -54,5 +54,5 @@ add_custom_target("unit-test"
     -C $<CONFIG>
     -L "unit-test.*"
     -VV
-  DEPENDS ${__TARGET_CORE})
+  DEPENDS ${__TARGET_CORE} ${__TARGET_UNIT_TEST})
 

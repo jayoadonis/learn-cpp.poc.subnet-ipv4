@@ -3,6 +3,9 @@
 
 #include <cassert>
 #include <iostream>
+#include <string>
+#include <sstream>
+#include <limits>
 
 #include "learn_cpp/poc/subnet_ipv4/core/IPv4.h"
 
@@ -17,7 +20,33 @@ namespace learn_cpp::poc::subnet_ipv4::unit_test {
   }
 
   void test_ipv4_ii() {
-    std::cout << "<><><> OK\n";
+    std::cout << "<><><> OK!!!\n";
+
+    std::istringstream iss("1.2.3.4");
+    std::string out_token;
+    std::uint32_t result = 0;
+
+    for(std::size_t i = 0; i < 4; ++i) {
+      if(!std::getline(iss, out_token, '.')) {
+        throw std::runtime_error("Invalid IPv4 format");
+      }
+
+      std::cout << ":::<" << i << "> iss.str(): '" << iss.str() << "'\n";
+      std::cout << ":::<" << i << "> out_token: '" << out_token << "'\n";
+      
+      std::int32_t octet = std::stoi(out_token);
+      if(octet < 0 || octet > std::numeric_limits<std::uint8_t>::max()) {
+        throw std::runtime_error("Invalid IPv4 octect");
+      }
+
+
+      std::cout << ":::<" << i << "> octet: " << octet << "\n";
+      std::cout << ":::<" << i << "> result << 8: " << (result << 8) << "\n";
+
+      result = (result << 8) | static_cast<std::uint32_t>(octet);
+      
+      std::cout << ":::<" << i << "> result: " << result << "\n";
+    }
   }
 }
 
