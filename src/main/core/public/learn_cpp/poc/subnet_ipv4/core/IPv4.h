@@ -6,6 +6,12 @@
 
 namespace learn_cpp::poc::subnet_ipv4::core {
   class IPv4 {
+  public:
+    enum class CIDRNotation : std::uint16_t {
+      A = 8u,
+      B = 16u,
+      C = 24u
+    };
   protected:
     explicit IPv4(std::uint32_t ip);
   public:
