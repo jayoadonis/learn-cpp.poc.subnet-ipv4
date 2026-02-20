@@ -15,7 +15,7 @@ file(GLOB_RECURSE __target_core_src_cxx CONFIGURE_DEPENDS
   ${CMAKE_CURRENT_SOURCE_DIR}/cpp/${__PROJECT_PKG_DIR}/core/*.cxx
   ${CMAKE_CURRENT_SOURCE_DIR}/cpp/${__PROJECT_PKG_DIR}/core/*.cc)
 
-list(FILTER ${__target_core_src_cxx}
+list(FILTER __target_core_src_cxx
   EXCLUDE REGEX "main\\.(cpp|cxx)$")
 
 target_sources(${__TARGET_CORE} PRIVATE ${__target_core_src_cxx})

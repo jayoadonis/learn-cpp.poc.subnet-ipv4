@@ -26,22 +26,21 @@ namespace learn_cpp::poc::subnet_ipv4::core {
   IPv4 IPv4::from_string(std::string const &ip) {
     std::istringstream iss(ip);
     std::string out_token;
-    std::uint32_t result = 0;
+    std::uint32_t base_10_ip;
 
-    for(std::size_t i = 0; i < 4; ++i) {
-      if(!std::getline(iss, out_token, '.')) {
-        throw std::runtime_error("Invalid IPv4 format");
-      }
-      
-      std::uint32_t octet = std::stoul(out_token, nullptr, 10);
-      if(octet < 0 || octet > std::numeric_limits<std::uint8_t>::max()) {
-        throw std::runtime_error("Invalid IPv4 octect");
-      }
+    for(size_t i = 0; i < 4; ++i) {
+      if(!std::getline(iss, out_token, '.'))
+        throw std::runtime_error("Invalid IPv4 format.");
 
-      result = (result << 8) | octet;
+      std::int32_t base_10_octet = std::stol(out_token, nullptr, 10);
+
+      if(base_10_octet < 0 || base_10_octet > std::numeric_limits<std::uint8_t>::max())
+        throw std::runtime_error("Invalid IPv4 octet");
+
+      base_10_ip = (base_10_ip << 8) | static_cast<std::uint32_t>(base_10_octet);
     }
-
-    return IPv4(result);
+    
+    return IPv4(base_10_ip);
   }
 
 
