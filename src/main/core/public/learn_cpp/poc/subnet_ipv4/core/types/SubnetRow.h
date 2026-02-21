@@ -5,9 +5,9 @@
 
 namespace learn_cpp::poc::subnet_ipv4::core::types {
   struct SubnetRow {
-    std::string m_network_host;
-    std::string m_usable_range_hosts;
-    std::string m_broadcast_host;
+    std::string m_network_ip;
+    std::string m_usable_range_ips;
+    std::string m_broadcast_ip;
   };
 }
 #endif

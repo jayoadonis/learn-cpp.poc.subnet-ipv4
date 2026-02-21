@@ -12,9 +12,8 @@ namespace learn_cpp::poc::subnet_ipv4::core {
       B = 16u,
       C = 24u
     };
-  protected:
-    explicit IPv4(std::uint32_t ip);
   public:
+    explicit IPv4(std::uint32_t ip);
     [[nodiscard]] virtual constexpr inline std::uint32_t value() const;
     virtual std::uint16_t first_octet() const;
     virtual std::string to_string() const;

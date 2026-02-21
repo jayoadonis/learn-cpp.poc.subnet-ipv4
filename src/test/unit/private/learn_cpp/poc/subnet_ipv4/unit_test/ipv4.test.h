@@ -12,15 +12,17 @@
 namespace learn_cpp::poc::subnet_ipv4::unit_test {
   void test_ipv4() {
     char const *ip = "101.20.1.30";
+
     subnet_ipv4::core::IPv4 ipv4 
       = subnet_ipv4::core::IPv4::from_string(ip);
+      
     std::cout << "::: " << ipv4.to_string() << ", " << ipv4.value() << ", " << ipv4.first_octet() << "\n";
+
     assert(ipv4.to_string() == ip);
     assert(ipv4.value() == 1'695'809'822u);
   }
 
   void test_ipv4_ii() {
-    std::cout << "<><><> OK!!!\n";
 
     std::istringstream iss("1.2.3.4");
     std::string out_token;

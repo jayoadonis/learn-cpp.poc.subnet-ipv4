@@ -36,10 +36,12 @@ add_custom_command(TARGET ${__TARGET_UNIT_TEST}
 add_test(NAME "compact" COMMAND ${__TARGET_UNIT_TEST} "--compact")
 add_test(NAME "ipv4-test-i" COMMAND ${__TARGET_UNIT_TEST} "--ipv4-test-i")
 add_test(NAME "ipv4-test-ii" COMMAND ${__TARGET_UNIT_TEST} "--ipv4-test-ii")
+add_test(NAME "subnet-calc-test-i" COMMAND ${__TARGET_UNIT_TEST} "--subnet-calc-test-i")
 
 set_tests_properties("compact" PROPERTIES LABELS "unit-test-compact")
 set_tests_properties("ipv4-test-i" PROPERTIES LABELS "unit-test-ipv4-test-i")
 set_tests_properties("ipv4-test-ii" PROPERTIES LABELS "unit-test-ipv4-test-ii")
+set_tests_properties("subnet-calc-test-i" PROPERTIES LABELS "unit-test-subnet-calc-test-i")
 
 string(TOLOWER ${CMAKE_CXX_COMPILER_ID} __cmake_cxx_compiler_id_tolower)
 string(TOLOWER ${CMAKE_SYSTEM_NAME} __cmake_system_name_tolower)
