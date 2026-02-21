@@ -22,7 +22,7 @@ int main(int arg_c, char **arg_v) {
   if (arg_c != 2) {
     std::cout << "::: Warning: option not specified, default to (" << Command_t::Compact << ")\n";
     std::cout << "::: " << subnet_ipv4::unit_test::util::all_option_str() << "\n";
-    strcpy_s(option, cmd_option_str(Command_t::Compact));
+    strcpy_s(option, subnet_ipv4::unit_test::util::cmd_option_str(Command_t::Compact));
   } else {
     strcpy_s(option, arg_v[1]);
   }
@@ -50,6 +50,11 @@ int main(int arg_c, char **arg_v) {
   //   throw std::runtime_error(
   //       "::: Invalid options. " + std::string(option_str()));
   // }
+  
+  if(Command_t::Invalid == cmd){
+    throw std::runtime_error(
+        "::: Invalid options (" + std::string(option) + "). Should be either of the ff. " + std::string(subnet_ipv4::unit_test::util::all_option_str()));
+  }
 
   if(Command_t::Compact == cmd || Command_t::IPv4TestI == cmd) {
     subnet_ipv4::unit_test::test_ipv4();
@@ -59,10 +64,6 @@ int main(int arg_c, char **arg_v) {
   }
   if(Command_t::Compact == cmd || Command_t::SubnetCalcI == cmd) {
     subnet_ipv4::unit_test::subnet_calc_test_i();
-  }
-  else{
-    throw std::runtime_error(
-        "::: Invalid options. " + std::string(subnet_ipv4::unit_test::util::all_option_str()));
   }
 
   return 0;
